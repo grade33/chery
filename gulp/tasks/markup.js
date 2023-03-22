@@ -7,7 +7,7 @@ const { isDev } = require('../config/mode');
 exports.markup = function markup() {
   return src(path.src.markup)
     .pipe(pug({ pretty: isDev }))
-    .pipe(plugins.replace(/@\//g, './'))
+    .pipe(plugins.replace(/@\//g, './assets/'))
     .pipe(dest(path.build.markup))
     .pipe(plugins.browsersync.stream());
 };

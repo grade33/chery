@@ -1,8 +1,7 @@
 //  Base
 @use './base/reset';
 @use './base/grid';
-
-// @use './base/typography';
+@use './base/typography';
 
 //  Vendor
 @use './vendor/swiper';
@@ -14,5 +13,4 @@
 //  Components
 @use './components/header';
 @use './components/footer';
-
-//  Pages
+@use './components/hero';

@@ -6,15 +6,21 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  // ! color
-  // ! font
+  color: vars.$black;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: Montserrat, sans-serif;
+  line-height: 17px;
 }
 
 .container {
   width: 100%;
-  max-width: calc(var(--container) + (var(--cont-padding) * 2));
+  max-width: 1190px;
   margin: 0 auto;
-  padding-right: var(--cont-padding);
-  padding-left: var(--cont-padding);
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.first-section {
+  padding-top: 126px;
 }

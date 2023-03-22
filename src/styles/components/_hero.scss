@@ -1,0 +1,63 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  color: vars.$white;
+  background: url('@/img/hero-bg.jpg') no-repeat center / cover;
+
+  &__inner {
+    padding: 93px 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 93px;
+    align-items: center;
+    max-width: 1160px;
+    min-height: 100vh;
+    padding: 0 15px;
+  }
+
+  &__container-benefits {
+    max-width: 1198px;
+    margin-top: auto;
+    padding: 0 15px;
+  }
+
+  &__title {
+    align-self: flex-end;
+    margin-left: auto;
+    font-weight: 400;
+    font-size: 48px;
+    font-family: TacticSansExd, sans-serif;
+  }
+
+  &__benefits {
+    display: flex;
+    gap: 33px;
+    align-items: center;
+    padding: 30px 40px 0;
+    color: vars.$black;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: TacticSansExd, sans-serif;
+    line-height: 18px;
+    background: vars.$white;
+    border-top: 4px solid vars.$red;
+
+    &-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 51px;
+      height: 51px;
+    }
+  }
+}

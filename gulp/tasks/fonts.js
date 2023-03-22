@@ -8,7 +8,7 @@ const { path } = require('../config/path');
 exports.otfToTtf = function otfToTtf() {
   // Ищем файлы шрифтов .otf
   return (
-    src(`${path.srcFolder}/assets/fonts/*.otf`, {})
+    src(`${path.srcFolder}/fonts/*.otf`, {})
       // Конвертируем в .ttf
       .pipe(
         fonter({
@@ -16,14 +16,14 @@ exports.otfToTtf = function otfToTtf() {
         })
       )
       // Выгружаем в исходную папку
-      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
+      .pipe(dest(`${path.srcFolder}/fonts/`))
   );
 };
 
 exports.ttfToWoff = function ttfToWoff() {
   // Ищем файлы шрифтов .ttf
   return (
-    src(`${path.srcFolder}/assets/fonts/*.ttf`, {})
+    src(`${path.srcFolder}/fonts/*.ttf`, {})
       // Конвертируем в .woff
       .pipe(
         fonter({
@@ -31,25 +31,25 @@ exports.ttfToWoff = function ttfToWoff() {
         })
       )
       // Выгружаем в папку с исходниками
-      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
+      .pipe(dest(`${path.srcFolder}/fonts/`))
       // Ищем файлы .ttf
-      .pipe(src(`${path.srcFolder}/assets/fonts/*.ttf`))
+      .pipe(src(`${path.srcFolder}/fonts/*.ttf`))
       // Конвертируем в .woff2
       .pipe(ttf2woff2())
-      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
+      .pipe(dest(`${path.srcFolder}/fonts/`))
   );
 };
 
 exports.fontDrag = function fontDrag() {
   // Ищем файлы .woff и .woff2 и выгружаем в папку с исходниками
   del([
-    `${path.srcFolder}/assets/fonts/*.*`,
-    `!${path.srcFolder}/assets/fonts/*.woff`,
-    `!${path.srcFolder}/assets/fonts/*.woff2`,
+    `${path.srcFolder}/fonts/*.*`,
+    `!${path.srcFolder}/fonts/*.woff`,
+    `!${path.srcFolder}/fonts/*.woff2`,
   ]);
-  return src(`${path.srcFolder}/assets/fonts/*.woff`, {})
+  return src(`${path.srcFolder}/fonts/*.woff`, {})
     .pipe(dest(path.build.fonts))
-    .pipe(src(`${path.srcFolder}/assets/fonts/*.woff2`))
+    .pipe(src(`${path.srcFolder}/fonts/*.woff2`))
     .pipe(dest(path.build.fonts));
 };
 
@@ -107,7 +107,7 @@ exports.fontStyle = function fontStyle() {
             }
             fs.appendFile(
               fontsFile,
-              `@font-face {\n\tfont-weight: ${fontWeight};\n\tfont-family: ${fontName};\n\tfont-style: ${fontStyle};\n\tsrc: url('@/assets/fonts/${fontFileName}.woff2') format('woff2'), url('@/assets/fonts/${fontFileName}.woff') format('woff');\n\tfont-display: swap;\n}\r\n`,
+              `@font-face {\n\tfont-weight: ${fontWeight};\n\tfont-family: ${fontName};\n\tfont-style: ${fontStyle};\n\tsrc: url('@/fonts/${fontFileName}.woff2') format('woff2'), url('@/fonts/${fontFileName}.woff') format('woff');\n\tfont-display: swap;\n}\r\n`,
               cb
             );
             newFileOnly = fontFileName;

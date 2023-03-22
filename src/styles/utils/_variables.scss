@@ -20,27 +20,7 @@ $lg: $min-lg - 0.02px;
 $md: $min-md - 0.02px;
 $sm: $min-sm - 0.02px;
 
-:root {
-  --container: 1360px;
-  --cont-padding: 15px;
-
-  @media (max-width: $xxl) {
-    --container: 1140px;
-  }
-
-  @media (max-width: $xl) {
-    --container: 950px;
-  }
-
-  @media (max-width: $lg) {
-    --container: 720px;
-  }
-
-  @media (max-width: $md) {
-    --container: 530px;
-  }
-
-  @media (max-width: $sm) {
-    --container: 100%;
-  }
-}
+// Colors
+$black: #000;
+$white: #fff;
+$red: #a6192e;

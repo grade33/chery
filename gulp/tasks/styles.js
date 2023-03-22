@@ -20,7 +20,7 @@ exports.styles = function styles() {
       includePaths: ['node_modules'],
       outputStyle: 'expanded'
     }))
-    .pipe(plugins.replace(/@\//g, '../../'))
+    .pipe(plugins.replace(/@\//g, '../'))
     .pipe(plugins.if(isProd, groupCssMediaQueries()))
     .pipe(plugins.if(isProd, cleanCss({
       level: 2
