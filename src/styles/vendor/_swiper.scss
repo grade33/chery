@@ -1,0 +1,13 @@
+@use "../utils/variables" as vars;
+@use "../utils/mixins" as mix;
+@use "../utils/functions" as fn;
+
+.swiper {
+  &-button-prev,
+  &-button-next {
+    &::after {
+      content: none;
+    }
+  }
+}
+

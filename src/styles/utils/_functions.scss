@@ -1,0 +1,31 @@
+@use './variables' as vars;
+
+@function free-place() {
+  @return calc((100vw - var(--container) - 17px) / 2);
+}
+
+@function clip-min($min-num, $max-num) {
+  $breakpoints: (vars.$sm-num, vars.$md-num, vars.$lg-num, vars.$xl-num, vars.$xxl-num);
+  $min-bp: vars.$min;
+  $vw: null;
+  $current-bp: null;
+  @for $i from 1 through length($breakpoints) {
+    $current-bp: nth($breakpoints, $i);
+    $vw: calc($max-num / $current-bp) * 100;
+    $is-fits: calc($vw / 100) * $min-bp <= $min-num;
+    @if $is-fits {
+      @return clamp(#{$min-num * 1px}, #{calc(round($vw * 100) / 100) * 1vw}, #{$max-num * 1px});
+    }
+  }
+  @return clamp(#{$min-num * 1px}, #{calc(round($vw * 100) / 100) * 1vw}, #{$max-num * 1px});
+}
+
+@function clip-max($min-num, $max-num) {
+  $max-bp: vars.$xxl-num;
+  $min-bp: vars.$min;
+  $vw: calc($max-num / $max-bp) * 100;
+  $is-fits: calc($vw / 100) * $min-bp <= $min-num;
+  @if $is-fits {
+    @return clamp(#{$min-num * 1px}, #{calc(round($vw * 100) / 100) * 1vw}, #{$max-num * 1px});
+  }
+}

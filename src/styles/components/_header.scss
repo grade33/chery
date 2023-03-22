@@ -1,0 +1,15 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mix;
+@use '../utils/functions' as fn;
+
+.header {
+  &_blur {
+    // ! background-color
+    background: rgba(#000, 0.4);
+    backdrop-filter: blur(8px);
+  }
+
+  &_hide {
+    transform: translateY(-100%);
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "eslint-config-airbnb-base",
+    "eslint-config-prettier",
+    "prettier"
+  ],
+  "plugins": ["prettier", "eslint-plugin-prettier"],
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "gulp/",
+    "gulpfile.js",
+    "webpack.config.js"
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off"
+  }
+}
