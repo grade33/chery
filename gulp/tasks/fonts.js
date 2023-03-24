@@ -8,7 +8,7 @@ const { path } = require('../config/path');
 exports.otfToTtf = function otfToTtf() {
   // Ищем файлы шрифтов .otf
   return (
-    src(`${path.srcFolder}/fonts/*.otf`, {})
+    src(`${path.srcFolder}/assets/fonts/*.otf`, {})
       // Конвертируем в .ttf
       .pipe(
         fonter({
@@ -16,14 +16,14 @@ exports.otfToTtf = function otfToTtf() {
         })
       )
       // Выгружаем в исходную папку
-      .pipe(dest(`${path.srcFolder}/fonts/`))
+      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
   );
 };
 
 exports.ttfToWoff = function ttfToWoff() {
   // Ищем файлы шрифтов .ttf
   return (
-    src(`${path.srcFolder}/fonts/*.ttf`, {})
+    src(`${path.srcFolder}/assets/fonts/*.ttf`, {})
       // Конвертируем в .woff
       .pipe(
         fonter({
@@ -31,25 +31,25 @@ exports.ttfToWoff = function ttfToWoff() {
         })
       )
       // Выгружаем в папку с исходниками
-      .pipe(dest(`${path.srcFolder}/fonts/`))
+      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
       // Ищем файлы .ttf
-      .pipe(src(`${path.srcFolder}/fonts/*.ttf`))
+      .pipe(src(`${path.srcFolder}/assets/fonts/*.ttf`))
       // Конвертируем в .woff2
       .pipe(ttf2woff2())
-      .pipe(dest(`${path.srcFolder}/fonts/`))
+      .pipe(dest(`${path.srcFolder}/assets/fonts/`))
   );
 };
 
 exports.fontDrag = function fontDrag() {
   // Ищем файлы .woff и .woff2 и выгружаем в папку с исходниками
   del([
-    `${path.srcFolder}/fonts/*.*`,
-    `!${path.srcFolder}/fonts/*.woff`,
-    `!${path.srcFolder}/fonts/*.woff2`,
+    `${path.srcFolder}/assets/fonts/*.*`,
+    `!${path.srcFolder}/assets/fonts/*.woff`,
+    `!${path.srcFolder}/assets/fonts/*.woff2`,
   ]);
-  return src(`${path.srcFolder}/fonts/*.woff`, {})
+  return src(`${path.srcFolder}/assets/fonts/*.woff`, {})
     .pipe(dest(path.build.fonts))
-    .pipe(src(`${path.srcFolder}/fonts/*.woff2`))
+    .pipe(src(`${path.srcFolder}/assets/fonts/*.woff2`))
     .pipe(dest(path.build.fonts));
 };
 

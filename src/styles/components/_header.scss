@@ -7,19 +7,43 @@
   top: 50px;
   right: 0;
   left: 0;
+  z-index: 20;
   color: vars.$white;
+
+  @media (max-width: vars.$xl) {
+    top: 0;
+  }
 
   &__container {
     display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
-    max-width: 1160px;
-    padding: 0 15px;
+    width: 100%;
+    @media (max-width: vars.$xl) {
+      padding: 18px 0;
+    }
   }
 
   &__logo {
     flex: none;
     width: 160px;
+    @media (max-width: vars.$xl) {
+      display: none;
+    }
+
+    &-mobile {
+      @media (min-width: vars.$min-xl) {
+        display: none;
+      }
+    }
   }
 
   &__nav {
@@ -31,6 +55,10 @@
     letter-spacing: -5%;
     background: rgba(vars.$white, 49%);
     border-radius: 10px;
+
+    @media (max-width: vars.$lg) {
+      display: none;
+    }
 
     &-list {
       display: flex;
@@ -47,7 +75,7 @@
   &__tel {
     font-weight: 400;
     font-size: 22px;
-    font-family: TacticSansExd, sans-serif;
+    font-family: 'Tactic Sans Extended', sans-serif;
     line-height: 26px;
   }
 

@@ -24,3 +24,29 @@ $sm: $min-sm - 0.02px;
 $black: #000;
 $white: #fff;
 $red: #a6192e;
+
+// Container
+:root {
+  --container: 1160px;
+  --padding: 15px;
+  @media (max-width: $xl) {
+    --container: 960px;
+  }
+  @media (max-width: $lg) {
+    --container: 720px;
+  }
+  @media (max-width: $md) {
+    --container: 540px;
+  }
+  @media (max-width: $sm) {
+    --container: 100%;
+  }
+}
+
+$container: var(--container);
+$padding: var(--padding);
+
+// Grid gutter
+$gutter: 30px;
+
+

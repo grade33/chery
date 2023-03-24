@@ -1,7 +1,7 @@
 @use './variables' as vars;
 
 @function free-place() {
-  @return calc((100vw - var(--container) - 17px) / 2);
+  @return calc((100vw - vars.$container) / 2);
 }
 
 @function clip-min($min-num, $max-num) {

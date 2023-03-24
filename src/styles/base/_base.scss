@@ -10,17 +10,40 @@
   font-weight: 500;
   font-size: 14px;
   font-family: Montserrat, sans-serif;
-  line-height: 17px;
+  line-height: 1.21;
 }
 
 .container {
   width: 100%;
-  max-width: 1190px;
+  max-width: calc(vars.$container + (vars.$padding * 2));
   margin: 0 auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: vars.$padding;
+  padding-left: vars.$padding;
 }
 
 .first-section {
   padding-top: 126px;
+}
+
+.btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px;
+  color: vars.$white;
+  white-space: nowrap;
+  background: vars.$red;
+  border: 1px solid transparent;
+  border-radius: 3px;
+
+  &_trs {
+    color: vars.$red;
+    background: transparent;
+    border-color: vars.$red;
+  }
+
+  &__icon {
+    width: 8px;
+    height: 8px;
+  }
 }

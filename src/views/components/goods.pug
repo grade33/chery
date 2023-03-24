@@ -1,0 +1,115 @@
+mixin goods
+  section.goods
+    - let qount = 7;
+    .goods__container.container 
+      .goods__inner
+        ul.goods__list 
+          li.goods__item 
+            button.goods__item-btn.goods__item-btn_active(data-slide-index="0"  type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 8
+                br
+                | PRO MAX
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 1 050 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="1" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 8
+                br
+                | PRO
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 1 000 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="2" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 8
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 850 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="3" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 7
+                br
+                | PRO MAX
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 750 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="4" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 7
+                br
+                | PRO
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 600 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="5" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 4
+                br
+                | PRO
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 150 000 ₽
+          li.goods__item 
+            button.goods__item-btn(data-slide-index="6" type="button")
+              strong.goods__item-name
+                span.goods__item-name_accent TIGGO 
+                | 4
+              span.goods__item-profit 
+                span Выгода до 
+                br
+                span 100 000 ₽
+        .goods__slider.swiper 
+          ul.swiper-wrapper
+            while qount > 0
+              - qount--;
+              li.swiper-slide
+                .goods__slider-item
+                  .goods__img-block 
+                    img.goods__img(src="@/img/car.png" alt="")
+                  .goods__content
+                    strong.goods__name 
+                      span.goods__name_accent TIGGO 
+                      | 8 PRO MAX
+                    ul.goods__benefits 
+                      li.goods__benefits-item
+                        svg.goods__benefits-icon
+                          use(xlink:href="./assets/sprite.svg#goods--benefit-1")
+                        span.goods__benefits-text Мощный двигатель 2.0 GDI 197 л.с, разгон до 100 км/ч за 8,5с
+                      li.goods__benefits-item
+                        svg.goods__benefits-icon
+                          use(xlink:href="./assets/sprite.svg#goods--benefit-2")
+                        span.goods__benefits-text Современные HD-камеры кругового обзора 360 градусов
+                      li.goods__benefits-item
+                        svg.goods__benefits-icon
+                          use(xlink:href="./assets/sprite.svg#goods--benefit-3")
+                        span.goods__benefits-text Цифровая зона управления с 2 интегрированными 12,3" экранами
+                    .goods__sum 
+                      span.goods__sum-price 
+                        | Выгода до
+                        br
+                        span.goods__sum-price_amount 850 900 ₽
+                      .goods__sum-btn-block
+                        a.btn.goods__sum-btn-price(href="#") 
+                          | Узнать цену
+                          svg.btn__icon
+                            use(xlink:href="./assets/sprite.svg#right-arrow")
+                        button.btn.btn_trs.goods__sum-btn-credit(type="button") Рассчитать кредит
