@@ -25,21 +25,38 @@
   padding-top: 126px;
 }
 
+.section-title {
+  font-weight: 700;
+  font-size: 36px;
+  font-family: 'Tactic Sans Extended', sans-serif;
+  line-height: 43px;
+}
+
 .btn {
   display: inline-flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
   padding: 14px;
-  color: vars.$white;
   white-space: nowrap;
-  background: vars.$red;
+  text-align: center;
   border: 1px solid transparent;
   border-radius: 3px;
+
+  &_red {
+    color: vars.$white;
+    background: vars.$red;
+  }
 
   &_trs {
     color: vars.$red;
     background: transparent;
     border-color: vars.$red;
+  }
+
+  &_white {
+    color: vars.$black;
+    background: vars.$white;
   }
 
   &__icon {

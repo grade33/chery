@@ -1,0 +1,105 @@
+include ../partials/fields
+
+mixin exchange
+  section.exchange
+    .exchange__container.container 
+      .exchange__text-block 
+        h2.exchange__title.section-title
+          | Обменяйте свой автомобиль на 
+          span.exchange__title_accent новый Chery выгодно!
+        p.exchange__desc Программа Trade-in – это уникальная возможность передать свой автомобиль в счет стоимости нового автомобиля
+      .row.gy-5
+        .col-5.col-xl-6.col-lg
+          ul.exchange__steps 
+            li.exchange__step
+              .exchange__step-content
+                .exchange__step-text-block
+                  span.exchange__step-name Шаг
+                  .exchange__step-count-block 
+                    span.exchange__step-count 1
+                    svg.exchange__step-count-icon
+                      use(xlink:href="./assets/sprite.svg#arrow-small")
+                svg.exchange__step-bg(viewBox="0 0 159 133", xmlns="http://www.w3.org/2000/svg")
+                  path(fill="url(#paint0_linear_1_239)", d="M0 0H127.2L159 66.5L127.2 133H0L31.8 66.5L0 0Z")
+                  defs
+                    linearGradient#paint0_linear_1_239(x1="151", y1="-1.55583e-06", x2="-3.02568e-06", y2="67", gradientUnits="userSpaceOnUse")
+                      stop(stop-color="#d9d9d9")
+                      stop(offset="1", stop-color="#d9d9d9", stop-opacity="0")
+                
+              strong.exchange__step-desc Вы просто сдаете нам Ваш автомобиль.
+            li.exchange__step
+              .exchange__step-content
+                .exchange__step-text-block
+                  span.exchange__step-name Шаг
+                  .exchange__step-count-block 
+                    span.exchange__step-count 2
+                    svg.exchange__step-count-icon
+                      use(xlink:href="./assets/sprite.svg#arrow-small")
+                svg.exchange__step-bg(viewBox="0 0 159 133", xmlns="http://www.w3.org/2000/svg")
+                  path(fill="url(#paint0_linear_1_239)", d="M0 0H127.2L159 66.5L127.2 133H0L31.8 66.5L0 0Z")
+                  defs
+                    linearGradient#paint0_linear_1_239(x1="151", y1="-1.55583e-06", x2="-3.02568e-06", y2="67", gradientUnits="userSpaceOnUse")
+                      stop(stop-color="#d9d9d9")
+                      stop(offset="1", stop-color="#d9d9d9", stop-opacity="0")
+                
+              strong.exchange__step-desc Если нужно доплачиваете разницу в цене.
+            li.exchange__step
+              .exchange__step-content
+                .exchange__step-text-block
+                  span.exchange__step-name Шаг
+                  .exchange__step-count-block 
+                    span.exchange__step-count 3
+                    svg.exchange__step-count-icon
+                      use(xlink:href="./assets/sprite.svg#arrow-small")
+                svg.exchange__step-bg(viewBox="0 0 159 133", xmlns="http://www.w3.org/2000/svg")
+                  path(fill="url(#paint0_linear_1_239)", d="M0 0H127.2L159 66.5L127.2 133H0L31.8 66.5L0 0Z")
+                  defs
+                    linearGradient#paint0_linear_1_239(x1="151", y1="-1.55583e-06", x2="-3.02568e-06", y2="67", gradientUnits="userSpaceOnUse")
+                      stop(stop-color="#d9d9d9")
+                      stop(offset="1", stop-color="#d9d9d9", stop-opacity="0")
+                
+              strong.exchange__step-desc Вы просто сдаете нам Ваш автомобиль.
+        .col-7.col-xl-6.col-lg
+          .exchange__form-block
+            form.exchange__form(action="#") 
+              .exchange__field-block
+                strong.exchange__field-name Марка:
+                select.select(name="brand") 
+                  option(value="") Option 1
+                  option(value="") Option 2
+                  option(value="") Option 3
+                  option(value="") Option 4
+              .exchange__field-block
+                strong.exchange__field-name Модель:
+                select.select(name="model") 
+                  option(value="") Option 1
+                  option(value="") Option 2
+                  option(value="") Option 3
+                  option(value="") Option 4
+              .exchange__field-block
+                strong.exchange__field-name Марка:
+                select.select(name="date") 
+                  option(value="") Option 1
+                  option(value="") Option 2
+                  option(value="") Option 3
+                  option(value="") Option 4
+              .exchange__field-block
+                strong.exchange__field-name Ваше имя:
+                +input({
+                  name: 'exchangeName',
+                  type: 'text',
+                  placeholder: '',
+                  required: true,
+                },)
+              .exchange__field-block
+                strong.exchange__field-name Телефон:
+                +input({
+                  name: 'exchangeName',
+                  type: 'text',
+                  placeholder: '',
+                  required: true,
+                },)
+              button.exchange__submit.btn.btn_red(type="submit") Оценить Трейд-ин
+                svg.btn__icon
+                  use(xlink:href="./assets/sprite.svg#right-arrow")
+            p.exchange__form-desc Нажимая кнопку "Оценить Трейд-Ин", вы соглашаетесь с политикой защиты данных "Центр Леон Авто Север"

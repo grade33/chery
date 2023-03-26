@@ -5,10 +5,13 @@ export const classNames = {
     hide: 'header_hide',
   },
   swiper: {
+    hero: 'hero__slider',
     goods: {
       swiper: 'goods__slider',
       btn: 'goods__item-btn',
       btnActive: 'goods__item-btn_active',
     },
   },
+  range: 'range',
+  select: 'select',
 };

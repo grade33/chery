@@ -1,24 +1,35 @@
 mixin hero
-  section.hero.first-section
-    .hero__main-container.container 
-      h1.hero__title TIGGO 8 PRO MAX
-    .hero__benefits.container
-      .hero__benefits-inner
-        .hero__benefits-list
+  section.hero
+    .swiper.hero__slider
+      ul.swiper-wrapper 
+        - let i = 0;
+        while i < 4
+          li.swiper-slide
+            - i++;
+            .hero__slider-slide.first-section
+              .hero__container.container 
+                h2.hero__title TIGGO 8 PRO MAX
+              .hero__bg-block
+                picture.hero__bg-wrap
+                  source(media="(max-width: 575.98px)", srcset="@/img/hero-bg-mobile.jpg")
+                  img.hero__bg(src="@/img/hero-bg.jpg", alt="")
+    .hero__benefits
+      .hero__benefits-container.container
+        .hero__benefits-inner
           ul.row.g-3.gy-3
-            li.hero__benefits-item.col-3.col-lg-6.col-sm-12
+            li.hero__benefits-item.col-3.col-lg-6.col-sm
               svg.hero__benefits-icon
                 use(xlink:href="./assets/sprite.svg#benefits--icon-1")
               strong.hero__benefits-name Выгодные условия покупки
-            li.hero__benefits-item.col-3.col-lg-6.col-sm-12
+            li.hero__benefits-item.col-3.col-lg-6.col-sm
               svg.hero__benefits-icon
                 use(xlink:href="./assets/sprite.svg#benefits--icon-2")
               strong.hero__benefits-name Большой выбор авто в наличии
-            li.hero__benefits-item.col-3.col-lg-6.col-sm-12
+            li.hero__benefits-item.col-3.col-lg-6.col-sm
               svg.hero__benefits-icon
                 use(xlink:href="./assets/sprite.svg#benefits--icon-3")
               strong.hero__benefits-name Честный выкуп в трейд-ин
-            li.hero__benefits-item.col-3.col-lg-6.col-sm-12
+            li.hero__benefits-item.col-3.col-lg-6.col-sm
               svg.hero__benefits-icon
                 use(xlink:href="./assets/sprite.svg#benefits--icon-4")
               strong.hero__benefits-name Официальная гарантия до 7 лет

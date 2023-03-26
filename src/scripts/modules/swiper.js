@@ -1,7 +1,21 @@
-import Swiper from 'swiper';
+import Swiper, { Autoplay } from 'swiper';
 import { classNames } from '../utils/classNames';
 
 import 'swiper/css'; // eslint-disable-line import/no-unresolved
+
+export function initSwiperHero() {
+  const classSwiper = classNames.swiper.hero;
+
+  return new Swiper(`.${classSwiper}`, {
+    modules: [Autoplay],
+    autoplay: {
+      delay: 6000,
+    },
+    slidesPerView: 1,
+    rewind: true,
+    speed: 1500,
+  });
+}
 
 export function initSwiperGoods() {
   const classSwiper = classNames.swiper.goods.swiper;
@@ -24,7 +38,7 @@ export function initSwiperGoods() {
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      const {slideIndex} = button.dataset;
+      const { slideIndex } = button.dataset;
       currentBtn.classList.remove(classBtnActive);
       button.classList.add(classBtnActive);
       currentBtn = button;
@@ -35,7 +49,7 @@ export function initSwiperGoods() {
   mySwiper.on('slideChange', () => {
     const { activeIndex } = mySwiper;
     buttons.forEach((button) => {
-      const {slideIndex} = button.dataset;
+      const { slideIndex } = button.dataset;
       if (+slideIndex === activeIndex) {
         button.classList.add(classBtnActive);
       } else {

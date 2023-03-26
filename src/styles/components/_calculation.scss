@@ -1,0 +1,98 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.calculation {
+  padding: fn.clip-min(32, 50) 0;
+  color: vars.$white;
+  background: vars.$red;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    @media (max-width: vars.$md) {
+      gap: 32px;
+    }
+  }
+
+  &__title-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    &_accent {
+      color: vars.$black;
+    }
+  }
+
+  &__conditions {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  &__range {
+    &-block {
+      display: flex;
+      gap: fn.clip-min(20, 60);
+      @media (max-width: vars.$md) {
+        flex-direction: column;
+      }
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    &-title {
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    &-values-block {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 7px;
+      font-weight: 500;
+      font-size: 11px;
+      font-family: 'Tactic Sans Extended', sans-serif;
+      line-height: 13px;
+    }
+  }
+
+  &__field {
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .input {
+      &__field {
+        background: #810e1f;
+        border-color: #810e1f;
+      }
+    }
+  }
+
+  &__submit {
+    padding: 20px;
+  }
+
+  &__field-block,
+  &__range-block,
+  &__submit {
+    width: 100%;
+  }
+}

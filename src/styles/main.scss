@@ -9,9 +9,12 @@
 
 //  Partials
 @use './base/base';
+@use './partials/fields';
 
 //  Components
 @use './components/header';
 @use './components/footer';
 @use './components/hero';
 @use './components/goods';
+@use './components/calculation';
+@use './components/exchange';

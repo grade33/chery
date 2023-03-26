@@ -61,10 +61,10 @@
 
         .goods__item {
           &-name {
-            color: vars.$black;
+            color: vars.$white;
 
             &_accent {
-              color: vars.$white;
+              color: vars.$black;
             }
           }
 
@@ -76,7 +76,7 @@
     }
 
     &-name {
-      color: vars.$red;
+      color: vars.$black;
       font-weight: 700;
       font-size: 20px;
       font-family: 'Tactic Sans Extended', sans-serif;
@@ -84,7 +84,7 @@
       transition: color 0.3s ease-in-out;
 
       &_accent {
-        color: vars.$black;
+        color: vars.$red;
       }
     }
 
@@ -121,14 +121,10 @@
 
   &__name {
     margin-bottom: 13px;
-    color: vars.$red;
-    font-weight: 700;
-    font-size: 36px;
-    font-family: 'Tactic Sans Extended', sans-serif;
-    line-height: 43px;
+    color: vars.$black;
 
     &_accent {
-      color: vars.$black;
+      color: vars.$red;
     }
   }
 

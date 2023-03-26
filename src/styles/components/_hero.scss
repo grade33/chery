@@ -3,44 +3,63 @@
 @use '../utils/functions' as fn;
 
 .hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   color: vars.$white;
-  background: url('@/img/hero-bg.jpg') no-repeat center / cover;
 
-  &__main-container {
+  &__slider {
+    width: 100%;
+    height: 100vh;
+
+    &-slide {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding-bottom: 100px;
+    }
+  }
+
+  &__container {
     display: flex;
     flex-direction: column;
-    gap: 93px;
-    align-items: center;
-    min-height: 100vh;
-    padding-top: 93px;
-    padding-bottom: 93px;
+    height: 100%;
   }
 
   &__title {
     margin-left: auto;
+    padding-top: 93px;
     font-weight: 700;
-    font-size: 48px;
+    font-size: fn.clip-min(29, 48);
     font-family: 'Tactic Sans Extended', sans-serif;
+    line-height: fn.clip-min(38, 58);
     @media (max-width: vars.$xl) {
       margin: 0 auto;
       margin-top: auto;
     }
   }
 
+  &__bg {
+    &-block {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+    }
+
+    &-wrap {
+      width: 100%;
+      height: 100%;
+    }
+
+    width: 100%;
+    height: 100%;
+  }
+
   &__benefits {
-    margin-top: auto;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    margin-top: -85px;
 
     &-inner {
       margin: 0 -60px;
-      @media (max-width: vars.$xxl) {
-        margin: 0;
-      }
-    }
-
-    &-list {
       padding: 30px 40px 0;
       overflow: hidden;
       color: vars.$black;
@@ -50,6 +69,9 @@
       line-height: 18px;
       background: vars.$white;
       border-top: 4px solid vars.$red;
+      @media (max-width: vars.$xxl) {
+        margin: 0;
+      }
     }
 
     &-item {

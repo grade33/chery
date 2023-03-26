@@ -1,0 +1,47 @@
+include ../partials/fields
+
+mixin calculation
+  section.calculation
+    .calculation__container.container
+      .calculation__title-block 
+        h2.calculation__title.section-title
+          | РАССЧИТАТЬ 
+          span.calculation__title_accent КРЕДИТ*
+        span.calculation__conditions * Условия кредитования
+      form.calculation__form(action="#") 
+        .row.gy-3
+          .col-5.col-xxl-6.col-lg
+            .calculation__range-block
+              .calculation__range
+                span.calculation__range-title Первоначальный взнос, %
+                +range({
+                  minVal: 0,
+                  maxVal: 70, 
+                  defaultVal: 16,
+                })
+                .calculation__range-values-block
+                  span.calculation__range-min 0
+                  span.calculation__range-max 70
+              .calculation__range
+                span.calculation__range-title Срок кредита, мес.
+                +range({
+                  minVal: 0,
+                  maxVal: 70, 
+                  defaultVal: 12,
+                })
+                .calculation__range-values-block
+                  span.calculation__range-min 0
+                  span.calculation__range-max 70
+          .col-4.col-xxl-6.col-lg
+            .calculation__field-block
+              +input({
+                name: 'calculationTel',
+                name: 'tel',
+                placeholder: '',
+                required: true,
+              }, 'calculation__field')
+              +checkbox({name: 'agreement'})
+                span Согласен на обработку моих 
+                a(href="#") персональных данных
+          .col-3.col-xxl-3.col-lg
+            button.calculation__submit.btn.btn_white(type="submit") Рассчитать кредит

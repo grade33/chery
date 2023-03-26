@@ -1,0 +1,32 @@
+mixin input(data, className = '')
+  //- data - name, type, placeholder, required
+  .input(class=className)
+    label.visually-hidden(for=data.name) 
+    input.input__field(id=data.name name=data.name type=data.type placeholder=data.placeholder required=!!data.required autocomplete="off")
+
+mixin textarea(data, className = '')
+  //- data - name, placeholder, required
+  .input(class=className)
+    label.visually-hidden(for=data.name) 
+    textarea.input__field(id=data.name name=data.name placeholder=data.placeholder required=!!data.required rows="1" autocomplete="off")
+
+
+mixin checkbox(data, className = '')
+  //- data - name
+  //- className
+  label.checkbox(class=className)
+    input.visually-hidden.checkbox__flag(type="checkbox" name=data.name)
+    span.checkbox__custom
+      svg.checkbox__custom_active
+        use(xlink:href="./assets/sprite.svg#checked")
+    span.checkbox__text
+      block
+
+mixin range(data, className)
+  //- data -  minVal, maxVal, defaultVal
+  //- className      
+  .range
+    input.range__input(type="range" min=data.minVal max=data.maxVal value=data.defaultVal)
+    span.range__progress
+    span.range__thumb
+      span.range__value

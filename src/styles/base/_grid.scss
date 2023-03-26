@@ -4,57 +4,52 @@
 // Определение переменных
 $gutter-width: vars.$gutter;
 $breakpoints: (
+  '': 0,
   'xxl': vars.$xxl,
   'xl': vars.$xl,
   'lg': vars.$lg,
   'md': vars.$md,
   'sm': vars.$sm,
-  '': 0,
 );
 
 // Миксины
-
 @mixin make-row() {
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(-1 * $gutter-width / 2);
-  margin-left: calc(-1 * $gutter-width / 2);
+  margin-right: -0.5 * $gutter-width;
+  margin-left: -0.5 * $gutter-width;
 }
 
 @mixin make-col($size, $columns: 12) {
   flex: 0 0 percentage(calc($size / $columns));
   max-width: percentage(calc($size / $columns));
-  padding-right: calc($gutter-width / 2);
-  padding-left: calc($gutter-width / 2);
+  padding-right: 0.5 * $gutter-width;
+  padding-left: 0.5 * $gutter-width;
 }
 
-@mixin generate-grid() {
+@mixin generate-grid($breakpoint-name: '') {
   .row {
     @include make-row;
   }
 
-  .col {
+  .col#{$breakpoint-name} {
     @include make-col(12);
   }
 
   @for $i from 1 through 12 {
-    .col-#{$i} {
+    .col#{$breakpoint-name}-#{$i} {
       @include make-col($i);
     }
   }
 }
 
 // Генерация классов колонок для каждого брейкпоинта
-@include generate-grid;
-
 @each $breakpoint-name, $breakpoint-value in $breakpoints {
-  @if $breakpoint-name != 'xxl' {
+  @if $breakpoint-name == '' {
+    @include generate-grid;
+  } @else {
     @media (max-width: $breakpoint-value) {
-      @for $i from 1 through 12 {
-        .col-#{$breakpoint-name}-#{$i} {
-          @include make-col($i);
-        }
-      }
+      @include generate-grid('-' + $breakpoint-name);
     }
   }
 }

@@ -1,114 +1,122 @@
 mixin goods
   section.goods
-    - let qount = 7;
+    -
+      const carsList = [
+        {
+          brand: 'TIGGO',
+          model: '8 PRO MAX',
+          src: '@/img/cars/car-1.png',
+          profit: '1 050 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный двигатель 2.0 GDI 197 л.с, разгон до 100 км/ч за 8,5с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: 'Цифровая зона управления с 2 интегрированными 12,3" экранами'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '8 PRO',
+          src: '@/img/cars/car-2.png',
+          profit: '1 000 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации 2.0 Turbo 170 CVT9 или 1.6 Turbo 186 DCT7'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: 'Цветной экран с бортовым компьютером в панели приборов 12,3"'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '8',
+          src: '@/img/cars/car-3.png',
+          profit: '850 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации 1.5 Turbo DCT6  147 л.с., разгон до 100 км/ч за 9,8 с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: 'Цветной экран с бортовым компьютером в панели приборов 7"'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '7 PRO MAX',
+          src: '@/img/cars/car-4.png',
+          profit: '750 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации SQRE4T15C 147 л.с., разгон до 100 км/ч за 9,8 с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: 'Цифровая панель приборов 12,3"'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '7 PRO',
+          src: '@/img/cars/car-5.png',
+          profit: '650 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации SQRE4T15C 147 л.с., разгон до 100 км/ч за 9,8 с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: 'Сенсорный емкостной 10" дисплей'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '4 PRO',
+          src: '@/img/cars/car-6.png',
+          profit: '150 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации 1.5 Turbo DCT6  147 л.с., разгон до 100 км/ч за 9,7 с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: '9" сенсорный емкостной дисплей с возможностью персонализации'},
+          ],
+        },
+        {
+          brand: 'TIGGO',
+          model: '4',
+          src: '@/img/cars/car-7.png',
+          profit: '10 000 ₽',
+          benefits: [
+            {icon: 'goods--engine.svg', desc: 'Мощный комплектации 1.5 Turbo DCT6  147 л.с., разгон до 100 км/ч за 9,7 с'},
+            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens.svg', desc: '9" сенсорный емкостной дисплей с возможностью персонализации'},
+          ],
+        },
+      ];
     .goods__container.container 
       .goods__inner
         ul.goods__list 
-          li.goods__item 
-            button.goods__item-btn.goods__item-btn_active(data-slide-index="0"  type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 8
-                br
-                | PRO MAX
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 1 050 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="1" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 8
-                br
-                | PRO
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 1 000 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="2" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 8
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 850 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="3" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 7
-                br
-                | PRO MAX
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 750 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="4" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 7
-                br
-                | PRO
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 600 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="5" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 4
-                br
-                | PRO
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 150 000 ₽
-          li.goods__item 
-            button.goods__item-btn(data-slide-index="6" type="button")
-              strong.goods__item-name
-                span.goods__item-name_accent TIGGO 
-                | 4
-              span.goods__item-profit 
-                span Выгода до 
-                br
-                span 100 000 ₽
+          each carsItem, idx in carsList
+            li.goods__item 
+              button.goods__item-btn(data-slide-index=idx type="button")
+                strong.goods__item-name
+                  =carsItem.brand
+                  span.goods__item-name_accent=carsItem.model
+                span.goods__item-profit 
+                  span Выгода до 
+                  br
+                  span=carsItem.profit
         .goods__slider.swiper 
           ul.swiper-wrapper
-            while qount > 0
-              - qount--;
+            each carsItem in carsList
               li.swiper-slide
                 .goods__slider-item
                   .goods__img-block 
-                    img.goods__img(src="@/img/car.png" alt="")
+                    img.goods__img(src=carsItem.src alt="Фотография машины")
                   .goods__content
-                    strong.goods__name 
-                      span.goods__name_accent TIGGO 
-                      | 8 PRO MAX
+                    h2.goods__name.section-title
+                      =carsItem.brand
+                      span.goods__name_accent=carsItem.model
                     ul.goods__benefits 
-                      li.goods__benefits-item
-                        svg.goods__benefits-icon
-                          use(xlink:href="./assets/sprite.svg#goods--benefit-1")
-                        span.goods__benefits-text Мощный двигатель 2.0 GDI 197 л.с, разгон до 100 км/ч за 8,5с
-                      li.goods__benefits-item
-                        svg.goods__benefits-icon
-                          use(xlink:href="./assets/sprite.svg#goods--benefit-2")
-                        span.goods__benefits-text Современные HD-камеры кругового обзора 360 градусов
-                      li.goods__benefits-item
-                        svg.goods__benefits-icon
-                          use(xlink:href="./assets/sprite.svg#goods--benefit-3")
-                        span.goods__benefits-text Цифровая зона управления с 2 интегрированными 12,3" экранами
+                      each benefit in carsItem.benefits
+                        li.goods__benefits-item
+                          svg.goods__benefits-icon
+                            use(xlink:href=`./assets/sprite.svg#${benefit.icon}`)
+                          span.goods__benefits-text=benefit.text
                     .goods__sum 
                       span.goods__sum-price 
                         | Выгода до
                         br
-                        span.goods__sum-price_amount 850 900 ₽
+                        span.goods__sum-price_amount=carsItem.profit
                       .goods__sum-btn-block
-                        a.btn.goods__sum-btn-price(href="#") 
+                        a.btn.btn_red.goods__sum-btn-price(href="#") 
                           | Узнать цену
                           svg.btn__icon
                             use(xlink:href="./assets/sprite.svg#right-arrow")

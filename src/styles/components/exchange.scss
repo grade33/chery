@@ -1,0 +1,150 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+#my-gradient {
+  /* устанавливаем направление градиента слева направо */
+  background-image: linear-gradient(to right, #d9d9d9, #fff);
+}
+
+.exchange {
+  padding-top: 80px;
+  padding-bottom: 70px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fn.clip-min(24, 40);
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: fn.clip-min(9, 12);
+  }
+
+  &__title {
+    max-width: 820px;
+
+    &_accent {
+      color: vars.$red;
+    }
+  }
+
+  &__desc {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  &__steps {
+    display: grid;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+
+    &-content {
+      position: relative;
+      width: 100%;
+    }
+
+    &-text-block {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      transform: translate(-50%, -50%);
+      @media (max-width: vars.$sm) {
+        transform: translate(-70%, -50%);
+      }
+    }
+
+    &-name {
+      font-weight: 400;
+      font-size: 13px;
+      font-family: 'Tactic Sans Extended', sans-serif;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    &-count {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: vars.$white;
+      font-weight: 400;
+      font-size: 16px;
+      font-family: 'Tactic Sans Extended', sans-serif;
+      line-height: 19px;
+      transform: translate(-70%, -50%);
+
+      &-block {
+        position: relative;
+        flex: none;
+      }
+
+      &-icon {
+        width: fn.clip-min(37, 50);
+        height: fn.clip-min(30, 40);
+      }
+    }
+
+    &-bg {
+      width: 100%;
+    }
+
+    &-desc {
+      max-width: 112px;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+    gap: 12px 22px;
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    &-desc {
+      color: #818181;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+
+  &__field {
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    &-name {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &__submit {
+    align-self: flex-end;
+  }
+}
