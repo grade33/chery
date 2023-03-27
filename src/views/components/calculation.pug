@@ -36,10 +36,10 @@ mixin calculation
             .calculation__field-block
               +input({
                 name: 'calculationTel',
-                name: 'tel',
+                type: 'tel',
                 placeholder: '',
                 required: true,
-              }, 'calculation__field')
+              }, 'calculation__field phone-mask')
               +checkbox({name: 'agreement'})
                 span Согласен на обработку моих 
                 a(href="#") персональных данных

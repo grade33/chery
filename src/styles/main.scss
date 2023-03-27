@@ -10,6 +10,7 @@
 //  Partials
 @use './base/base';
 @use './partials/fields';
+@use './partials/menu';
 
 //  Components
 @use './components/header';
@@ -18,3 +19,4 @@
 @use './components/goods';
 @use './components/calculation';
 @use './components/exchange';
+@use './components/map';

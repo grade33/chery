@@ -1,7 +1,14 @@
+include ../partials/menu
+
 mixin header
+  +menu
   header.header
     .header__container.container 
       .header__content
+        button.header__burger(type="button")
+          span.header__burger-item
+          span.header__burger-item
+          span.header__burger-item
         a.header__logo(href="#") 
           img.header__logo-img(src="@/img/logo.png" alt="")
         nav.header__nav

@@ -15,7 +15,6 @@ html(lang=lang)
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="./assets/styles/libs.css")
     link(rel="stylesheet", href="./assets/styles/main.css")
-    script(defer src="./assets/scripts/main.js") 
     title #{title}
   body
     div(class="app " + pageName)
@@ -23,3 +22,7 @@ html(lang=lang)
       main.main
         block content
       +footer
+
+
+    script(src="https://api-maps.yandex.ru/2.1/?apikey=468db478-c4c3-4057-920e-2869b7bbb9d6&lang=ru_RU")
+    script(defer src="./assets/scripts/main.js") 

@@ -1,0 +1,80 @@
+@use '../utils/mixins' as mix;
+@use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
+
+.map {
+  position: relative;
+
+  &__container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: unset;
+    max-width: 560px;
+    transform: translateY(-50%);
+
+    @media (max-width: vars.$lg) {
+      display: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: fn.clip-max(18, 50) fn.clip-max(22, 60) fn.clip-max(18, 40);
+    background: #ebebeb;
+  }
+
+  &__tel {
+    font-weight: 700;
+    font-size: 36px;
+    font-family: 'Tactic Sans Extended', sans-serif;
+    line-height: 43px;
+  }
+
+  &__address {
+    &-block {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Tactic Sans Extended', sans-serif;
+    line-height: 24px;
+
+    &-icon {
+      width: 20px;
+      height: 29px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    padding: fn.clip-max(18, 44) fn.clip-max(22, 60);
+    background: #fff;
+  }
+
+  &__question {
+    max-width: 180px;
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}

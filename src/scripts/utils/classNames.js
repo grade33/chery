@@ -1,4 +1,11 @@
 export const classNames = {
+  burgerMenu: {
+    burger: 'header__burger',
+    close: 'menu__close',
+    menu: 'menu',
+    menuActive: 'menu_active',
+    menuContent: 'menu__content',
+  },
   header: {
     block: 'header',
     blur: 'header_blur',
@@ -12,6 +19,7 @@ export const classNames = {
       btnActive: 'goods__item-btn_active',
     },
   },
+  inputPhoneMask: 'phone-mask input',
   range: 'range',
   select: 'select',
 };

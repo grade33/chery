@@ -1,0 +1,14 @@
+mixin map
+  section.map
+    #map(style="width: 100%; height: 528px;")
+      .container.map__container
+        .map__content
+          .map__top
+            a.map__tel(href="tel:78612025930") 7 (861) 202 59 30
+            .map__address-block
+              svg.map__address-icon
+                use(xlink:href="./assets/sprite.svg#map-2")
+              address.map__address Краснодар, ул. Ростовское Шоссе, 34/10
+          .map__bottom
+            span.map__question Остались вопросы? Закажите обратный звонок!
+            button.map__btn.btn.btn_red(type="button") Заказать обратный звонок

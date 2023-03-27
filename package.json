@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "handy-collapse": "^1.1.0",
+    "imask": "^6.4.3",
     "normalize.css": "^8.0.1",
     "swiper": "^9.0.5"
   }
