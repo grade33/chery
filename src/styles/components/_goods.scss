@@ -120,6 +120,20 @@
   }
 
   &__name {
+    &-wrap {
+      @media (max-width: vars.$lg) {
+        display: none;
+      }
+
+      &-mobile {
+        @media (min-width: vars.$min-lg) {
+          display: none;
+        }
+
+        padding: 0 27px;
+      }
+    }
+
     margin-bottom: 13px;
     color: vars.$black;
 

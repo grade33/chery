@@ -8,9 +8,9 @@ mixin goods
           src: '@/img/cars/car-1.png',
           profit: '1 050 000 ₽',
           benefits: [
-            {icon: 'goods--engine.svg', desc: 'Мощный двигатель 2.0 GDI 197 л.с, разгон до 100 км/ч за 8,5с'},
-            {icon: 'goods--cameras.svg', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
-            {icon: 'goods--screens.svg', desc: 'Цифровая зона управления с 2 интегрированными 12,3" экранами'},
+            {icon: 'goods--engine', desc: 'Мощный двигатель 2.0 GDI 197 л.с, разгон до 100 км/ч за 8,5с'},
+            {icon: 'goods--cameras', desc: 'Современные HD-камеры кругового обзора 360 градусов'},
+            {icon: 'goods--screens', desc: 'Цифровая зона управления с 2 интегрированными 12,3" экранами'},
           ],
         },
         {
@@ -98,18 +98,23 @@ mixin goods
             each carsItem in carsList
               li.swiper-slide
                 .goods__slider-item
-                  .goods__img-block 
-                    img.goods__img(src=carsItem.src alt="Фотография машины")
-                  .goods__content
+                  .goods__name-wrap-mobile
                     h2.goods__name.section-title
                       =carsItem.brand
                       span.goods__name_accent=carsItem.model
+                  .goods__img-block 
+                    img.goods__img(src=carsItem.src alt="Фотография машины")
+                  .goods__content
+                    .goods__name-wrap
+                      h2.goods__name.section-title
+                        =carsItem.brand
+                        span.goods__name_accent=carsItem.model
                     ul.goods__benefits 
                       each benefit in carsItem.benefits
                         li.goods__benefits-item
                           svg.goods__benefits-icon
                             use(xlink:href=`./assets/sprite.svg#${benefit.icon}`)
-                          span.goods__benefits-text=benefit.text
+                          span.goods__benefits-text=benefit.desc
                     .goods__sum 
                       span.goods__sum-price 
                         | Выгода до
@@ -121,3 +126,5 @@ mixin goods
                           svg.btn__icon
                             use(xlink:href="./assets/sprite.svg#right-arrow")
                         button.btn.btn_trs.goods__sum-btn-credit(type="button") Рассчитать кредит
+          button.swiper-button-next(type="button")
+          button.swiper-button-prev(type="button")

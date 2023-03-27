@@ -1,4 +1,4 @@
-import Swiper, { Autoplay } from 'swiper';
+import Swiper, { Autoplay, Navigation } from 'swiper';
 import { classNames } from '../utils/classNames';
 
 import 'swiper/css'; // eslint-disable-line import/no-unresolved
@@ -21,9 +21,14 @@ export function initSwiperGoods() {
   const classSwiper = classNames.swiper.goods.swiper;
 
   const mySwiper = new Swiper(`.${classSwiper}`, {
+    modules: [Navigation],
     slidesPerView: 1,
     spaceBetween: 12,
     speed: 1000,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     keyboard: {
       enabled: true,
     },

@@ -1,72 +1,44 @@
 @use '../utils/mixins' as mix;
 @use '../utils/variables' as vars;
+@use '../utils/functions' as fn;
 
 .menu {
   position: fixed;
-  inset: 0;
   z-index: 50;
-  color: vars.$black;
-  font-size: 0;
-  background: rgba(vars.$black, 0.9);
+  overflow-y: auto;
+  color: vars.$white;
+  background: #a6192e;
+  transform: translateX(-100%);
   visibility: hidden;
-  opacity: 0;
-  backdrop-filter: blur(3px);
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  inset: 0;
 
   &_active {
+    transform: translateX(0);
     visibility: visible;
-    opacity: 1;
+  }
 
-    .menu {
-      &__content {
-        transform: translateX(0);
-      }
+  &__header {
+    margin: 0 calc(-1 * fn.free-place());
+    padding-right: vars.$padding;
+    padding-left: vars.$padding;
+    background: #550d17;
+
+    &::before {
+      content: none;
     }
   }
 
-  &__content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+  &__container {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    width: 70vw;
+    justify-content: space-between;
     height: 100%;
-    padding: 18px 30px;
-    overflow-y: auto;
-    background: vars.$white;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  &__close {
-    position: relative;
-    display: block;
-    width: 39px;
-    height: 30px;
-
-    &::before,
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      height: 4px;
-      background: lighten(vars.$black, 20%);
-      border-radius: 4px;
-      transform: translate(-50%, -50%) rotate(45deg);
-      content: '';
-    }
-
-    &::after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
   }
 
   &__nav {
+    width: fit-content;
+    margin: 0 auto;
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
@@ -79,5 +51,19 @@
     &-link {
       padding: 18px 0;
     }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    margin: 0 calc(-1 * fn.free-place());
+    padding: 23px vars.$padding;
+    background: #550d17;
+  }
+
+  &__logo {
+    display: inline-flex;
+    width: 90px;
+    margin-left: auto;
   }
 }

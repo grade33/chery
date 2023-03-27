@@ -3,20 +3,20 @@
 @use './base/grid';
 @use './base/typography';
 
-//  Vendor
-@use './vendor/swiper';
-@use './vendor/select';
-
 //  Partials
 @use './base/base';
+@use './partials/swiper';
 @use './partials/fields';
-@use './partials/menu';
 
 //  Components
 @use './components/header';
+@use './partials/menu';
 @use './components/footer';
 @use './components/hero';
 @use './components/goods';
 @use './components/calculation';
 @use './components/exchange';
 @use './components/map';
+
+// Custom
+@use './style.css';

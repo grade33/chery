@@ -3,7 +3,6 @@
 @use '../utils/functions' as fn;
 
 .calculation {
-  padding: fn.clip-min(32, 50) 0;
   color: vars.$white;
   background: vars.$red;
 
@@ -11,6 +10,9 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
+    padding-top: fn.clip-min(32, 50);
+    padding-bottom: fn.clip-min(32, 50);
+    border-top: 4px solid #000;
 
     @media (max-width: vars.$md) {
       gap: 32px;

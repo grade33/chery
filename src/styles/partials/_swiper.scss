@@ -1,0 +1,36 @@
+@use '../utils/variables' as vars;
+@use '../utils/mixins' as mix;
+@use '../utils/functions' as fn;
+
+.swiper {
+  &-button {
+    &-prev,
+    &-next {
+      position: absolute;
+      top: 0;
+      z-index: 5;
+      padding: 10px 0;
+
+      &::before {
+        content: url('@/img/chevron-left.svg');
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+
+    &-prev {
+      left: 0;
+
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
+
+    &-next {
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+}
