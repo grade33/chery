@@ -4924,111 +4924,6 @@ var Range = /*#__PURE__*/function () {
   }]);
   return Range;
 }();
-;// CONCATENATED MODULE: ./src/scripts/vendor/select/SingleSelect.js
-function SingleSelect_typeof(obj) { "@babel/helpers - typeof"; return SingleSelect_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, SingleSelect_typeof(obj); }
-function SingleSelect_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function SingleSelect_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, SingleSelect_toPropertyKey(descriptor.key), descriptor); } }
-function SingleSelect_createClass(Constructor, protoProps, staticProps) { if (protoProps) SingleSelect_defineProperties(Constructor.prototype, protoProps); if (staticProps) SingleSelect_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function SingleSelect_toPropertyKey(arg) { var key = SingleSelect_toPrimitive(arg, "string"); return SingleSelect_typeof(key) === "symbol" ? key : String(key); }
-function SingleSelect_toPrimitive(input, hint) { if (SingleSelect_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (SingleSelect_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
-function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
-function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
-var _initializeStructure = /*#__PURE__*/new WeakSet();
-var SingleSelect = /*#__PURE__*/function () {
-  function SingleSelect(selectElement) {
-    var _this = this;
-    SingleSelect_classCallCheck(this, SingleSelect);
-    _classPrivateMethodInitSpec(this, _initializeStructure);
-    this.originalSelect = selectElement;
-    this.customSelect = null;
-    this.selectHead = null;
-    this.selectBody = null;
-    this.optionsCollection = [];
-    this.currentHeadOption = null;
-    _classPrivateMethodGet(this, _initializeStructure, _initializeStructure2).call(this);
-    document.addEventListener('click', this.toggleSelect.bind(this));
-    this.optionsCollection.forEach(function (option) {
-      option.addEventListener('click', _this.changeOption.bind(_this, option));
-    });
-  }
-  SingleSelect_createClass(SingleSelect, [{
-    key: "toggleSelect",
-    value: function toggleSelect(event) {
-      if (!this.selectHead.contains(event.target)) {
-        this.customSelect.classList.toggle('is-open', false);
-        return;
-      }
-      this.customSelect.classList.toggle('is-open');
-    }
-  }, {
-    key: "changeOption",
-    value: function changeOption(optionElement) {
-      this.optionsCollection.forEach(function (option) {
-        option.classList.toggle('is-selected', option === optionElement);
-      });
-      var newHeadOption = optionElement.cloneNode(true);
-      newHeadOption.classList.replace('select__option_body', 'select__option_head');
-      this.currentHeadOption.replaceWith(newHeadOption);
-      this.currentHeadOption = newHeadOption;
-    }
-  }]);
-  return SingleSelect;
-}();
-function _initializeStructure2() {
-  var _this2 = this;
-  this.customSelect = document.createElement('div');
-  this.customSelect.className = this.originalSelect.className;
-  this.selectHead = document.createElement('div');
-  this.selectHead.classList.add('select__head');
-  this.customSelect.append(this.selectHead);
-  this.selectBody = document.createElement('div');
-  this.selectBody.classList.add('select__body');
-  this.customSelect.append(this.selectBody);
-  this.optionsCollection = Array.from(this.originalSelect.querySelectorAll('option')).map(function (_ref, index) {
-    var textContent = _ref.textContent,
-      value = _ref.value;
-    var optionElement = document.createElement('div');
-    optionElement.classList.add('select__option', 'select__option_body');
-    optionElement.textContent = textContent;
-    optionElement.dataset.value = value;
-    optionElement.dataset.id = index + 1;
-    _this2.selectBody.append(optionElement);
-    return optionElement;
-  });
-  var firstOption = this.optionsCollection[0].cloneNode(true);
-  this.optionsCollection[0].classList.add('is-selected');
-  firstOption.classList.replace('select__option_body', 'select__option_head');
-  this.currentHeadOption = firstOption;
-  this.selectHead.append(this.currentHeadOption);
-  this.originalSelect.replaceWith(this.customSelect);
-}
-;// CONCATENATED MODULE: ./src/scripts/vendor/select/Select.js
-function Select_typeof(obj) { "@babel/helpers - typeof"; return Select_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, Select_typeof(obj); }
-function Select_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function Select_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, Select_toPropertyKey(descriptor.key), descriptor); } }
-function Select_createClass(Constructor, protoProps, staticProps) { if (protoProps) Select_defineProperties(Constructor.prototype, protoProps); if (staticProps) Select_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function Select_toPropertyKey(arg) { var key = Select_toPrimitive(arg, "string"); return Select_typeof(key) === "symbol" ? key : String(key); }
-function Select_toPrimitive(input, hint) { if (Select_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (Select_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-
-var Select = /*#__PURE__*/function () {
-  function Select(selector) {
-    Select_classCallCheck(this, Select);
-    this.selects = document.querySelectorAll(selector);
-    this.selectInstances = [];
-    this.init();
-  }
-  Select_createClass(Select, [{
-    key: "init",
-    value: function init() {
-      var _this = this;
-      this.selects.forEach(function (select) {
-        _this.selectInstances.push(new SingleSelect(select));
-      });
-    }
-  }]);
-  return Select;
-}();
 ;// CONCATENATED MODULE: ./node_modules/ssr-window/ssr-window.esm.js
 /**
  * SSR Window 4.0.2
@@ -9759,9 +9654,9 @@ function create_element_if_not_defined_createElementIfNotDefined(swiper, origina
   if (swiper.params.createElements) {
     Object.keys(checkProps).forEach(key => {
       if (!params[key] && params.auto === true) {
-        let element = elementChildren(swiper.el, `.${checkProps[key]}`)[0];
+        let element = utils_elementChildren(swiper.el, `.${checkProps[key]}`)[0];
         if (!element) {
-          element = createElement('div', checkProps[key]);
+          element = utils_createElement('div', checkProps[key]);
           element.className = checkProps[key];
           swiper.el.append(element);
         }
@@ -9856,7 +9751,7 @@ function Navigation({
   }
   function init() {
     const params = swiper.params.navigation;
-    swiper.params.navigation = createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
+    swiper.params.navigation = create_element_if_not_defined_createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
       nextEl: 'swiper-button-next',
       prevEl: 'swiper-button-prev'
     });
@@ -13659,10 +13554,8 @@ function EffectCards({
 var classNames = {
   burgerMenu: {
     burger: 'header__burger',
-    close: 'menu__close',
     menu: 'menu',
-    menuActive: 'menu_active',
-    menuContent: 'menu__content'
+    menuActive: 'menu_active'
   },
   header: {
     block: 'header',
@@ -13701,9 +13594,14 @@ function initSwiperHero() {
 function initSwiperGoods() {
   var classSwiper = classNames.swiper.goods.swiper;
   var mySwiper = new core(".".concat(classSwiper), {
+    modules: [Navigation],
     slidesPerView: 1,
     spaceBetween: 12,
     speed: 1000,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
     keyboard: {
       enabled: true
     },
@@ -13739,22 +13637,18 @@ function initSwiperGoods() {
 
 function burgerMenu() {
   var classBurgerBtn = classNames.burgerMenu.burger;
-  var classCloseBtn = classNames.burgerMenu.close;
   var classMenu = classNames.burgerMenu.menu;
-  var classMenuContent = classNames.burgerMenu.menuContent;
   var classMenuActive = classNames.burgerMenu.menuActive;
-  var burgerBtn = document.querySelector(".".concat(classBurgerBtn));
-  var closeBtn = document.querySelector(".".concat(classCloseBtn));
   var menu = document.querySelector(".".concat(classMenu));
-  var menuContent = document.querySelector(".".concat(classMenuContent));
-  burgerBtn.addEventListener('click', function () {
-    document.body.style.overflow = 'hidden';
-    menu.classList.add(classMenuActive);
-  });
-  menu.addEventListener('click', function (e) {
-    if (menuContent.contains(e.target) && !closeBtn.contains(e.target)) return;
-    document.body.style.overflow = 'auto';
-    menu.classList.remove(classMenuActive);
+  document.querySelectorAll(".".concat(classBurgerBtn)).forEach(function (burgerBtn) {
+    burgerBtn.addEventListener('click', function () {
+      if (document.body.style.overflow) {
+        document.body.style.overflow = null;
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+      menu.classList.toggle(classMenuActive);
+    });
   });
 }
 ;// CONCATENATED MODULE: ./src/scripts/modules/ymap.js
@@ -13797,14 +13691,9 @@ function initYMap() {
 
 
 
-
 // Range
 var classRange = classNames.range;
 new Range(".".concat(classRange)); // eslint-disable-line
-
-// Select
-var classSelect = classNames.select;
-new Select(".".concat(classSelect)); // eslint-disable-line
 
 // Burger
 burgerMenu();
