@@ -25,8 +25,4 @@ mixin checkbox(data, className = '')
 mixin range(data, className)
   //- data -  minVal, maxVal, defaultVal
   //- className      
-  .range
-    input.range__input(type="range" min=data.minVal max=data.maxVal value=data.defaultVal)
-    span.range__progress
-    span.range__thumb
-      span.range__value
+  input.range(type="range" min=data.minVal max=data.maxVal value=data.defaultVal)

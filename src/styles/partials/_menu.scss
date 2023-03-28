@@ -19,13 +19,8 @@
   }
 
   &__header {
-    margin: 0 calc(-1 * fn.free-place());
-    padding-right: vars.$padding;
-    padding-left: vars.$padding;
-    background: #550d17;
-
     &::before {
-      content: none;
+      background: #550d17;
     }
   }
 

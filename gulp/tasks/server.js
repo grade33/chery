@@ -7,6 +7,7 @@ exports.server = function server() {
       baseDir: `${path.build.markup}`,
     },
     port: 3000,
-    open: false,
+    open: true,
+    notify: false
   });
 };

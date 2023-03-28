@@ -4815,22 +4815,64 @@ function SingleRange_typeof(obj) { "@babel/helpers - typeof"; return SingleRange
 function SingleRange_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function SingleRange_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function SingleRange_createClass(Constructor, protoProps, staticProps) { if (protoProps) SingleRange_defineProperties(Constructor.prototype, protoProps); if (staticProps) SingleRange_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function SingleRange_defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return SingleRange_typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (SingleRange_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (SingleRange_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var SingleRange = /*#__PURE__*/function () {
-  function SingleRange(rangeElement) {
+  function SingleRange(rangeInputElement) {
+    var _this = this;
     SingleRange_classCallCheck(this, SingleRange);
-    this.range = rangeElement;
-    this.rangeInput = this.range.querySelector('.range__input');
-    this.rangeProgress = this.range.querySelector('.range__progress');
-    this.rangeThumb = this.range.querySelector('.range__thumb');
-    this.rangeValue = this.range.querySelector('.range__value');
+    SingleRange_defineProperty(this, "onPointerMove", function (event) {
+      if (!_this.isActive) return;
+      var trackRect = _this.rangeTrack.getBoundingClientRect();
+      var trackX = trackRect.left;
+      var trackWidth = trackRect.width;
+      var pointerX = event.clientX || event.touches[0].clientX;
+      var minValue = parseInt(_this.rangeInput.min, 10);
+      var maxValue = parseInt(_this.rangeInput.max, 10);
+      var newValue = minValue + Math.round((pointerX - trackX) / trackWidth * (maxValue - minValue));
+      newValue = Math.min(Math.max(newValue, minValue), maxValue);
+      _this.rangeInput.value = newValue;
+      _this.rangeValue.textContent = newValue;
+      _this.updateProgress();
+      _this.updateThumbPosition();
+    });
+    SingleRange_defineProperty(this, "onPointerUp", function () {
+      _this.isActive = false;
+      document.removeEventListener('mousemove', _this.onPointerMove);
+      document.removeEventListener('mouseup', _this.onPointerUp);
+      document.removeEventListener('mouseleave', _this.onPointerUp);
+      document.removeEventListener('touchmove', _this.onPointerMove);
+      document.removeEventListener('touchend', _this.onPointerUp);
+    });
+    this.rangeInput = rangeInputElement;
+    this.range = document.createElement('div');
+    this.range.classList.add('range');
+    this.rangeTrack = document.createElement('div');
+    this.rangeTrack.classList.add('range__track');
+    this.rangeProgress = document.createElement('span');
+    this.rangeProgress.classList.add('range__progress');
+    this.rangeOverlay = document.createElement('div');
+    this.rangeOverlay.classList.add('range__overlay');
+    this.rangeThumb = document.createElement('span');
+    this.rangeThumb.classList.add('range__thumb');
+    this.rangeValue = document.createElement('span');
+    this.rangeValue.classList.add('range__value');
     this.isActive = false;
     this.init();
   }
   SingleRange_createClass(SingleRange, [{
     key: "init",
     value: function init() {
+      this.rangeInput.classList.add('visually-hidden');
+      this.rangeInput.setAttribute('id', 'myInput');
+      this.rangeInput.parentNode.insertBefore(this.range, this.rangeInput);
+      this.range.appendChild(this.rangeInput);
+      this.range.appendChild(this.rangeTrack);
+      this.range.appendChild(this.rangeProgress);
+      this.range.appendChild(this.rangeOverlay);
+      this.rangeThumb.appendChild(this.rangeValue);
+      this.range.appendChild(this.rangeThumb);
       this.rangeValue.textContent = this.rangeInput.value;
       this.updateProgress();
       this.updateThumbPosition();
@@ -4856,29 +4898,37 @@ var SingleRange = /*#__PURE__*/function () {
   }, {
     key: "addEventListeners",
     value: function addEventListeners() {
-      var _this = this;
+      var _this2 = this;
       this.rangeInput.addEventListener('input', function () {
-        _this.rangeValue.textContent = _this.rangeInput.value;
-        _this.updateProgress();
-        _this.updateThumbPosition();
+        _this2.rangeValue.textContent = _this2.rangeInput.value;
+        _this2.updateProgress();
+        _this2.updateThumbPosition();
+      });
+      this.rangeOverlay.addEventListener('click', function (event) {
+        _this2.handleRangeClick(event);
       });
       this.rangeThumb.addEventListener('mousedown', function (event) {
         event.preventDefault();
-        _this.isActive = true;
-        document.addEventListener('mousemove', _this.onMouseMove.bind(_this));
-        document.addEventListener('mouseup', _this.onMouseUp.bind(_this));
-        document.addEventListener('mouseleave', _this.onMouseUp.bind(_this));
+        _this2.isActive = true;
+        document.addEventListener('mousemove', _this2.onPointerMove);
+        document.addEventListener('mouseup', _this2.onPointerUp);
+        document.addEventListener('mouseleave', _this2.onPointerUp);
+      });
+      this.rangeThumb.addEventListener('touchstart', function (event) {
+        event.preventDefault();
+        _this2.isActive = true;
+        document.addEventListener('touchmove', _this2.onPointerMove);
+        document.addEventListener('touchend', _this2.onPointerUp);
       });
     }
   }, {
-    key: "onMouseMove",
-    value: function onMouseMove(event) {
-      if (!this.isActive) return;
-      var inputRect = this.rangeInput.getBoundingClientRect();
-      var inputX = inputRect.left;
-      var inputWidth = inputRect.width;
+    key: "handleRangeClick",
+    value: function handleRangeClick(event) {
+      var trackRect = this.rangeTrack.getBoundingClientRect();
+      var trackX = trackRect.left;
+      var trackWidth = trackRect.width;
       var clickX = event.clientX;
-      var newValue = Math.round((clickX - inputX) / inputWidth * 70);
+      var newValue = Math.round((clickX - trackX) / trackWidth * 70);
       var minValue = parseInt(this.rangeInput.min, 10);
       var maxValue = parseInt(this.rangeInput.max, 10);
       newValue = Math.min(Math.max(newValue, minValue), maxValue);
@@ -4886,14 +4936,6 @@ var SingleRange = /*#__PURE__*/function () {
       this.rangeValue.textContent = newValue;
       this.updateProgress();
       this.updateThumbPosition();
-    }
-  }, {
-    key: "onMouseUp",
-    value: function onMouseUp() {
-      this.isActive = false;
-      document.removeEventListener('mousemove', this.onMouseMove.bind(this));
-      document.removeEventListener('mouseup', this.onMouseUp.bind(this));
-      document.removeEventListener('mouseleave', this.onMouseUp.bind(this));
     }
   }]);
   return SingleRange;
@@ -13555,7 +13597,8 @@ var classNames = {
   burgerMenu: {
     burger: 'header__burger',
     menu: 'menu',
-    menuActive: 'menu_active'
+    menuActive: 'menu_active',
+    close: 'menu__close'
   },
   header: {
     block: 'header',
@@ -13637,17 +13680,18 @@ function initSwiperGoods() {
 
 function burgerMenu() {
   var classBurgerBtn = classNames.burgerMenu.burger;
+  var classClose = classNames.burgerMenu.close;
   var classMenu = classNames.burgerMenu.menu;
   var classMenuActive = classNames.burgerMenu.menuActive;
   var menu = document.querySelector(".".concat(classMenu));
   document.querySelectorAll(".".concat(classBurgerBtn)).forEach(function (burgerBtn) {
     burgerBtn.addEventListener('click', function () {
-      if (document.body.style.overflow) {
-        document.body.style.overflow = null;
-      } else {
-        document.body.style.overflow = 'hidden';
-      }
       menu.classList.toggle(classMenuActive);
+    });
+  });
+  document.querySelectorAll(".".concat(classClose)).forEach(function (closeEl) {
+    closeEl.addEventListener('click', function () {
+      menu.classList.remove(classMenuActive);
     });
   });
 }

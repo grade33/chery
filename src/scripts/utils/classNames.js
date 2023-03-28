@@ -3,6 +3,7 @@ export const classNames = {
     burger: 'header__burger',
     menu: 'menu',
     menuActive: 'menu_active',
+    close: 'menu__close',
   },
   header: {
     block: 'header',
